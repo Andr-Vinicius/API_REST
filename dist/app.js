@@ -17,7 +17,6 @@ _dotenv2.default.config();
 
 const whiteList = [
   'http://35.247.240.68',
-  'http://localhost:3001',
 ];
 
 const corsOptions = {
