@@ -19,6 +19,7 @@ const whiteList = [
   'http://35.247.240.68',
 ];
 
+// eslint-disable-next-line no-unused-vars
 const corsOptions = {
   origin(origin, cb) {
     if (whiteList.indexOf(origin) !== -1 || !origin) {
@@ -37,7 +38,7 @@ class App {
   }
 
   middlewares() {
-    this.app.use(cors(corsOptions));
+    this.app.use(cors());
     this.app.use(helmet());
     this.app.use(express.urlencoded({ extended: true }));
     this.app.use(express.json());
