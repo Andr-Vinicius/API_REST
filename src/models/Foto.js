@@ -1,17 +1,14 @@
 import Sequelize, { Model } from 'sequelize';
-import appConfig from '../config/appConfig';
 
 export default class Foto extends Model {
   static init(sequelize) {
-    // Chamando init do Pai (Model)
     super.init({
-      // Criando o Model, parecido com a Migration, mas sem alguns campos
       originalname: {
         type: Sequelize.STRING,
         defaultValue: '',
         validate: {
           notEmpty: {
-            msg: 'Esse campo não pode ser vazio',
+            msg: 'Campo não pode ficar vazio.',
           },
         },
       },
@@ -20,14 +17,14 @@ export default class Foto extends Model {
         defaultValue: '',
         validate: {
           notEmpty: {
-            msg: 'Esse campo não pode ser vazio',
+            msg: 'Campo não pode ficar vazio.',
           },
         },
       },
       url: {
         type: Sequelize.VIRTUAL,
         get() {
-          return `${appConfig.url}/images/${this.getDataValue('filename')}`;
+          return `${process.env.APP_URL}/images/${this.getDataValue('filename')}`;
         },
       },
     }, {
