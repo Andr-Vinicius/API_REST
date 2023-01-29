@@ -2,7 +2,7 @@
 import dotenv from 'dotenv';
 import express from 'express';
 import cors from 'cors';
-import helmet from 'helmet';
+/* import helmet from 'helmet'; */
 import { resolve } from 'path';
 
 import homeRoutes from './routes/homeRoutes';
@@ -39,7 +39,8 @@ class App {
 
   middlewares() {
     this.app.use(cors());
-    this.app.use(helmet());
+    /* Não se comporta bem com HTTP (sem SSL)
+       this.app.use(helmet()); */
     this.app.use(express.urlencoded({ extended: true }));
     this.app.use(express.json());
     this.app.use('/images/', express.static(resolve(__dirname, '..', 'uploads', 'images')));
