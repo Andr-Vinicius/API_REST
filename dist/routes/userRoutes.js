@@ -4,7 +4,7 @@ var _LoginRequired = require('../middlewares/LoginRequired'); var _LoginRequired
 
 const router = new (0, _express.Router)();
 
-router.post('/', _LoginRequired2.default, _UserController2.default.store);
+router.post('/', _UserController2.default.store);
 
 // Não deveria existir - Segurança
 router.get('/', _UserController2.default.index); // Listar usuários?
